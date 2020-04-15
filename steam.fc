@@ -1,0 +1,1 @@
+/usr/bin/steam	--	system_u:object_r:steam_exec_t

@@ -1,0 +1,28 @@
+policy_module(steam, 0.0.1)
+
+########################################
+#
+# Declarations
+#
+
+attribute_role steam_roles;
+roleattribute user_r steam_roles;
+roleattribute unconfined_r steam_roles;
+
+type steam_t;
+type steam_exec_t;
+application_domain(steam_t, steam_exec_t)
+role steam_roles types steam_t;
+
+########################################
+#
+# Local policy
+#
+
+steam_domtrans(unconfined_t)
+
+
+
+optional_policy(`
+	unconfined_domain(steam_t)
+')
