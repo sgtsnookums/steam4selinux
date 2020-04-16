@@ -9,10 +9,21 @@ attribute_role steam_roles;
 roleattribute user_r steam_roles;
 roleattribute unconfined_r steam_roles;
 
+# Base types for steam domain
 type steam_t;
 type steam_exec_t;
 application_domain(steam_t, steam_exec_t)
 role steam_roles types steam_t;
+
+# Attribute for all files managed by steam
+attribute steam_file_type;
+# Fallback steam file type
+type steam_file_t;
+type steam_bin_t;
+type steam_lib_t;
+# Type for individual games' files under steamapps/common
+# TODO: create separate domains for separate games
+type steamapp_file_t;
 
 ########################################
 #
@@ -22,6 +33,13 @@ role steam_roles types steam_t;
 steam_domtrans(unconfined_t)
 
 
+steam_files_type(steam_file_t)
+steam_files_type(steam_bin_t)
+steam_files_type(steam_lib_t)
+steam_files_type(steamapp_file_t)
+
+manage_dirs_pattern(steam_t, steam_file_type, steam_file_type)
+manage_files_pattern(steam_t, steam_file_type, steam_file_type)
 
 optional_policy(`
 	unconfined_domain(steam_t)

@@ -1,1 +1,3 @@
-/usr/bin/steam	--	system_u:object_r:steam_exec_t
+/usr/bin/steam --	gencontext(system_u:object_r:steam_exec_t,s0)
+HOME_DIR/\.local/share/Steam(/.*)?	gencontext(unconfined_u:object_r:steam_file_t,s0)
+HOME_DIR/\.local/share/Steam/steamapps/common(/.*)?	gencontext(unconfined_u:object_r:steamapp_file_t,s0)

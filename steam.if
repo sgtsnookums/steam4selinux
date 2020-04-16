@@ -16,3 +16,23 @@ interface(`steam_domtrans',`
 	corecmd_search_bin($1)
 	domtrans_pattern($1, steam_exec_t, steam_t)
 ')
+
+########################################
+## <summary>
+##	Define a file type managed by steam
+## </summary>
+## <param name="type">
+##	<summary>
+##	File type to allow steam to manage
+##	</summary>
+## </param>
+#
+interface(`steam_files_type',`
+	gen_require(`
+		attribute steam_file_type;
+	')
+
+	files_type($1)
+	typeattribute $1 steam_file_type;
+')
+
