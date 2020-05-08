@@ -5,9 +5,13 @@ policy_module(steam, 0.0.1)
 # Declarations
 #
 
+gen_require(`
+    type unconfined_t;
+')
+
 attribute_role steam_roles;
-roleattribute user_r steam_roles;
-roleattribute unconfined_r steam_roles;
+#roleattribute user_r steam_roles;
+#roleattribute unconfined_r steam_roles;
 
 # Base types for steam domain
 type steam_t;
